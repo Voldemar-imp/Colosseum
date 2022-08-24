@@ -346,10 +346,14 @@ namespace Colosseum
     class Dimachaerus : Gladiator
     {
         private int _stamina;
+        private int _staminaEndurance;
+        private int _staminaRecovery;
 
         public Dimachaerus() : base("Димахер", 100, 15, 7, 5)
         {
             _stamina = 150;
+            _staminaEndurance = 50;
+            _staminaRecovery = 35;
         }
 
         public override void UseAbility(out bool success, out int damage)
@@ -361,12 +365,12 @@ namespace Colosseum
             {
                 Console.Write("Атака вторым мечом:");
                 damage = GetDamage();
-                _stamina -= 50;
+                _stamina -= _staminaEndurance;
             }
             else
             {
                 Console.WriteLine("Димахер слишком устал для второй атаки");
-                _stamina += 35;
+                _stamina += _staminaRecovery;
             }
         }
 
